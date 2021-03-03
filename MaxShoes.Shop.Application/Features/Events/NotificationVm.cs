@@ -1,10 +1,9 @@
-﻿using MaxShoes.Shop.Domain.Common;
+﻿using MaxShoes.Shop.Domain.Entities;
 using System;
 
-namespace MaxShoes.Shop.Domain.Entities
+namespace MaxShoes.Shop.Application.Features.Events
 {
-    public class Notification : AuditableEntity
-
+    public class NotificationVm
     {
         public string Id { get; set; }
 
