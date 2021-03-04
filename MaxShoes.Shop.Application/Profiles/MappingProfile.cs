@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using MaxShoes.Shop.Application.Features.Events;
+using MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationDetails;
 using MaxShoes.Shop.Domain.Entities;
 
-namespace MaxShoes.Shop.Application.Features.Profiles
+namespace MaxShoes.Shop.Application.Profiles
 {
     public class MappingProfile : Profile
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MaxShoes.Shop.Application.Features.Events
+namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationDetails
 {
     class GetNotificationDetailsQueryHandler : IRequestHandler<GetNotificationDetailsQuery, NotificationVm>
     {

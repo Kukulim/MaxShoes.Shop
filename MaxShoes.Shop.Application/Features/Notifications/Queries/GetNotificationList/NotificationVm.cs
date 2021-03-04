@@ -1,7 +1,7 @@
 ﻿using MaxShoes.Shop.Domain.Entities;
 using System;
 
-namespace MaxShoes.Shop.Application.Features.Events
+namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList
 {
     public class NotificationVm
     {
