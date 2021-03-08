@@ -15,9 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{A510F2FA-A76D-448E-BD7D-D5FA12A6B6DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxShoes.Shop.Domain", "MaxShoes.Shop.Domain\MaxShoes.Shop.Domain.csproj", "{7735A10C-A840-4002-A5BC-442E831284EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxShoes.Shop.Domain", "MaxShoes.Shop.Domain\MaxShoes.Shop.Domain.csproj", "{7735A10C-A840-4002-A5BC-442E831284EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxShoes.Shop.Application", "MaxShoes.Shop.Application\MaxShoes.Shop.Application.csproj", "{6D380B7B-604A-4CB3-B250-AA89FA5CCF01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxShoes.Shop.Application", "MaxShoes.Shop.Application\MaxShoes.Shop.Application.csproj", "{6D380B7B-604A-4CB3-B250-AA89FA5CCF01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxShoes.Shop.Presistance", "MaxShoes.Shop.Presistance\MaxShoes.Shop.Presistance.csproj", "{816FCD08-EA2B-466F-8ABE-867C7E4B8735}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6D380B7B-604A-4CB3-B250-AA89FA5CCF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D380B7B-604A-4CB3-B250-AA89FA5CCF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D380B7B-604A-4CB3-B250-AA89FA5CCF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{A510F2FA-A76D-448E-BD7D-D5FA12A6B6DF} = {3C8C24A0-2789-4AF3-83FA-7E746B6F3AAE}
 		{7735A10C-A840-4002-A5BC-442E831284EA} = {02B4840E-031F-445F-9FBC-F8D6F75D81A9}
 		{6D380B7B-604A-4CB3-B250-AA89FA5CCF01} = {02B4840E-031F-445F-9FBC-F8D6F75D81A9}
+		{816FCD08-EA2B-466F-8ABE-867C7E4B8735} = {B17C4AF2-08FE-40E2-B11F-4F38CAEF5EA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8410C6DA-BC47-44AE-83AC-2860B15B69A9}

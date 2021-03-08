@@ -2,7 +2,7 @@
 
 namespace MaxShoes.Shop.Application.Contracts.Presistance
 {
-    public interface INotificationServices :IAsyncRepository<Notification>
+    public interface INotificationRepository :IAsyncRepository<Notification>
     {
 
     }
