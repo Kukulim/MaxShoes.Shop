@@ -20,7 +20,7 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificati
 
         public async Task<NotificationVm> Handle(GetNotificationDetailsQuery request, CancellationToken cancellationToken)
         {
-            var notifications = await _notificationsRepository.GetByIdAsync(request.NotificationId);
+            var notifications = await _notificationsRepository.GetByIdAsync(request.NotificationId.ToString());
             return _mapper.Map<NotificationVm>(notifications);
         }
     }

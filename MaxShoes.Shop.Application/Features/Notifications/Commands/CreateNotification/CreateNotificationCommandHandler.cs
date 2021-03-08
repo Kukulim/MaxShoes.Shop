@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MaxShoes.Shop.Application.Contracts.Presistance;
+using MaxShoes.Shop.Application.Exceptions;
 using MaxShoes.Shop.Domain.Entities;
 using MediatR;
 using System;
@@ -23,6 +24,14 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotifi
 
         public async Task<Notification> Handle(CreateNotificationCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateNotificationValidator();
+            var validatorResult = validator.ValidateAsync(request);
+
+            if (validatorResult.Result.Errors.Count>0)
+            {
+                throw new ValidationException(validatorResult.Result);
+            }
+
             var notification = mapper.Map<Notification>(request);
             notification = await notificationsRepository.AddAsync(notification);
             return notification;
