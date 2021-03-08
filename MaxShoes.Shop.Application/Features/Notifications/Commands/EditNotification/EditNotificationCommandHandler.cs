@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MaxShoes.Shop.Application.Contracts.Infrastructure;
 using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Domain.Entities;
 using MediatR;
@@ -14,16 +15,26 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Commands.EditNotifica
     {
         private readonly IAsyncRepository<Notification> notificationsRepository;
         private readonly IMapper mapper;
+        private readonly IEmailService emailService;
 
-        public EditNotificationCommandHandler(IAsyncRepository<Notification> notificationsRepository, IMapper mapper)
+        public EditNotificationCommandHandler(IAsyncRepository<Notification> notificationsRepository, IMapper mapper, IEmailService emailService)
         {
             this.notificationsRepository = notificationsRepository;
             this.mapper = mapper;
+            this.emailService = emailService;
         }
         public async Task<Notification> Handle(EditNotificationCommand request, CancellationToken cancellationToken)
         {
             var notificationToEdit = await notificationsRepository.GetByIdAsync(request.Id);
             notificationToEdit = await notificationsRepository.EditAsync(notificationToEdit);
+            try
+            {
+                await emailService.SendEmailAsync("email@gmail.com", request.Title, request.Description);
+            }
+            catch (Exception)
+            {
+               //mayge logg
+            }
             return notificationToEdit;
         }
     }

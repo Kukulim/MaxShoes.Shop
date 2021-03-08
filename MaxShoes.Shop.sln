@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxShoes.Shop.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxShoes.Shop.Presistance", "MaxShoes.Shop.Presistance\MaxShoes.Shop.Presistance.csproj", "{816FCD08-EA2B-466F-8ABE-867C7E4B8735}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxShoes.Shop.Infrastructure", "MaxShoes.Shop.Infrastructure\MaxShoes.Shop.Infrastructure.csproj", "{2B2DE1E3-23AE-4A27-9ECD-A7765D6D0117}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{816FCD08-EA2B-466F-8ABE-867C7E4B8735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2DE1E3-23AE-4A27-9ECD-A7765D6D0117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2DE1E3-23AE-4A27-9ECD-A7765D6D0117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2DE1E3-23AE-4A27-9ECD-A7765D6D0117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2DE1E3-23AE-4A27-9ECD-A7765D6D0117}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{7735A10C-A840-4002-A5BC-442E831284EA} = {02B4840E-031F-445F-9FBC-F8D6F75D81A9}
 		{6D380B7B-604A-4CB3-B250-AA89FA5CCF01} = {02B4840E-031F-445F-9FBC-F8D6F75D81A9}
 		{816FCD08-EA2B-466F-8ABE-867C7E4B8735} = {B17C4AF2-08FE-40E2-B11F-4F38CAEF5EA3}
+		{2B2DE1E3-23AE-4A27-9ECD-A7765D6D0117} = {B17C4AF2-08FE-40E2-B11F-4F38CAEF5EA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8410C6DA-BC47-44AE-83AC-2860B15B69A9}
