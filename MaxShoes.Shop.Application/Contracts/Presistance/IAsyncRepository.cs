@@ -7,10 +7,10 @@ namespace MaxShoes.Shop.Application.Contracts.Presistance
 {
     public interface IAsyncRepository<T> where T : class
     {
-        Task<T> GetByIdAsync(Guid id);
+        Task<T> GetByIdAsync(string id);
         Task<List<T>> GetAllAsync();
         Task<T> AddAsync(T entity);
-        Task EditAsync(T entity);
+        Task<T> EditAsync(T entity);
         Task DeleteAsync(T entity);
 
     }
