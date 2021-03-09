@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MaxShoes.Shop.Application\MaxShoes.Shop.Application.csproj" />
+    <ProjectReference Include="..\..\MaxShoes.Shop.Infrastructure\MaxShoes.Shop.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\MaxShoes.Shop.Presistance\MaxShoes.Shop.Presistance.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+</Project>

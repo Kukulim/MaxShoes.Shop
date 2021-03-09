@@ -13,7 +13,7 @@ namespace MaxShoes.Shop.Presistance
     {
         public static IServiceCollection AddPresistanceServicesRegistration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("MaxShopConectionString")));
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("MaxDb")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddScoped<INotificationRepository, NotificationRepository>();
