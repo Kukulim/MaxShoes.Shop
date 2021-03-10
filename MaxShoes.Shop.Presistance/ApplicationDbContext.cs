@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using BC = BCrypt.Net.BCrypt;
 
 namespace MaxShoes.Shop.Presistance
 {

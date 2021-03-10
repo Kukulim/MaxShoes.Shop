@@ -14,7 +14,7 @@ namespace MaxShoes.Shop.Identity
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationIdentityDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationIdentityDbContext).Assembly);
 
             modelBuilder.Entity<User>(b =>
             {
