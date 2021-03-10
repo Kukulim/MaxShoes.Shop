@@ -1,4 +1,4 @@
-﻿namespace MaxShoes.Shop.Identity.Models.UserModels
+﻿namespace MaxShoes.Shop.Application.Models.UserModels
 {
     public static class UserRoles
     {

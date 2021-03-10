@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace MaxShoes.Shop.Identity.JwtAuth
+namespace MaxShoes.Shop.Application.Contracts.Identity
 {
     public interface IJwtAuthManager
     {

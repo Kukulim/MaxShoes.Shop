@@ -1,6 +1,6 @@
 ﻿
 
-using MaxShoes.Shop.Identity.Models.UserModels;
+using MaxShoes.Shop.Application.Models.UserModels;
 
 namespace MaxShoes.Shop.Application.Models.AccountModels
 {

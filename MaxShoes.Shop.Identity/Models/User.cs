@@ -1,4 +1,5 @@
-﻿using MaxShoes.Shop.Domain.Entities;
+﻿using MaxShoes.Shop.Application.Models.UserModels;
+using MaxShoes.Shop.Domain.Entities;
 using System.Collections.Generic;
 
 namespace MaxShoes.Shop.Identity.Models.UserModels

@@ -1,4 +1,5 @@
-﻿using MaxShoes.Shop.Identity.Models.UserModels;
+﻿using MaxShoes.Shop.Application.Models.UserModels;
+using MaxShoes.Shop.Identity.Models.UserModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using BC = BCrypt.Net.BCrypt;

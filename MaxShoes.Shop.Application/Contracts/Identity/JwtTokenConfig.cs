@@ -1,4 +1,4 @@
-﻿namespace MaxShoes.Shop.Identity.JwtAuth
+﻿namespace MaxShoes.Shop.Application.Contracts.Identity
 {
     public class JwtTokenConfig
     {

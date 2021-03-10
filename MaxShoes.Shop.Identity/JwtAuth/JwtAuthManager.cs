@@ -1,4 +1,5 @@
-﻿using MaxShoes.Shop.Identity.Models.JwtAuthModels;
+﻿using MaxShoes.Shop.Application.Contracts.Identity;
+using MaxShoes.Shop.Identity.Models.JwtAuthModels;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Concurrent;
