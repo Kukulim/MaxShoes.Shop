@@ -1,5 +1,7 @@
 ﻿
 
+using MaxShoes.Shop.Identity.Models.UserModels;
+
 namespace MaxShoes.Shop.Application.Models.AccountModels
 {
     public class EditContactRequest
