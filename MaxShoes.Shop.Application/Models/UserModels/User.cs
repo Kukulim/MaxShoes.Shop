@@ -16,6 +16,6 @@ namespace MaxShoes.Shop.Identity.Models.UserModels
         public bool IsEmailConfirmed { get; set; } = false;
         public Contact Contact { get; set; }
 
-        public virtual List<Notification> Notifications { get; set; }
+        //public virtual List<Notification> Notifications { get; set; }
     }
 }

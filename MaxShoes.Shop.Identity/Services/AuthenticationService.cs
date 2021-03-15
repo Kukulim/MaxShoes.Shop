@@ -68,7 +68,7 @@ namespace MaxShoes.Shop.Identity.Services
                 Email = CurrentUser.Email,
                 IsEmailConfirmed = CurrentUser.IsEmailConfirmed,
                 Contact = CurrentUser.Contact,
-                Notifications = CurrentUser.Notifications
+                //Notifications = CurrentUser.Notifications
             });
         }
 

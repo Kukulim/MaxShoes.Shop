@@ -17,7 +17,7 @@ namespace MaxShoes.Shop.Identity
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            Application.Contracts.Identity.JwtTokenConfig jwtTokenConfig = configuration.GetSection("jwtTokenConfig").Get<Application.Contracts.Identity.JwtTokenConfig>(); ;
+            JwtAuth.JwtTokenConfig jwtTokenConfig = configuration.GetSection("jwtTokenConfig").Get<JwtAuth.JwtTokenConfig>(); ;
             services.AddSingleton(jwtTokenConfig);
 
             services.AddDbContext<ApplicationIdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("MaxDb"),
