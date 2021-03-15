@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace MaxshoesBack.Services.UserServices
 {
-    public interface IUserServices : IAsyncRepository<User>
+    public interface IUserServices
     {
         Task<bool> IsAnExistingUserAsync (string userName, string UserEmail);
 
-        Task<User> GetUserByEmailAsync (string userEmail);
+        User GetUserByEmailAsync (string userEmail);
 
     }
 }

@@ -30,7 +30,7 @@ namespace MaxShoes.Shop.Identity.Services
         public async Task<LoginResult> AuthenticateAsync(LoginRequest request)
         {
 
-            var CurrentUser = await userServices.GetUserByEmailAsync(request.Email);
+            var CurrentUser =  userServices.GetUserByEmailAsync(request.Email);
 
             if (CurrentUser == null)
             {

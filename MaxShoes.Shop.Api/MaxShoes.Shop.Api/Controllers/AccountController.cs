@@ -21,6 +21,11 @@ namespace MaxShoes.Shop.Api.Controllers
             return Ok(await _authenticationService.AuthenticateAsync(request));
         }
 
+        //[HttpGet("test")]
+        //public async Task<ActionResult<LoginResult>> Test(LoginRequest request)
+        //{
+        //    return Ok("test");
+        //}
         //[HttpPost("register")]
         //public async Task<ActionResult<RegistrationResponse>> RegisterAsync(RegistrationRequest request)
         //{
