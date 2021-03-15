@@ -1,4 +1,5 @@
 using MaxShoes.Shop.Application;
+using MaxShoes.Shop.Identity;
 using MaxShoes.Shop.Infrastructure;
 using MaxShoes.Shop.Presistance;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +28,7 @@ namespace MaxShoes.Shop.Api
             services.AddApplicationServices();
             services.AddPresistanceServicesRegistration(Conifuration);
             services.AddInfractructureServicesRegistration(Conifuration);
+            services.AddIdentityServices(Conifuration);
 
             services.AddControllers();
 
@@ -46,6 +48,12 @@ namespace MaxShoes.Shop.Api
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseCors("Open");
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
