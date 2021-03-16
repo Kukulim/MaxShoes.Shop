@@ -1,9 +1,8 @@
 ﻿using MaxShoes.Shop.Identity.Models.UserModels;
 using MaxshoesBack.Services.UserServices;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Identity.Services
@@ -17,9 +16,9 @@ namespace MaxShoes.Shop.Identity.Services
             this.context = context;
         }
 
-        public User GetUserByEmailAsync(string userEmail)
+        public async Task<User> GetUserByEmailAsync(string userEmail)
         {
-            return context.Users.Where(u=>u.Email==userEmail).FirstOrDefault();
+            return await context.Users.Where(u=>u.Email==userEmail).FirstOrDefaultAsync();
         }
 
         public Task<bool> IsAnExistingUserAsync(string userName, string UserEmail)

@@ -1,4 +1,4 @@
-﻿namespace MaxShoes.Shop.Domain.Entities
+﻿namespace MaxShoes.Shop.Domain.Entities.StatusEnum
 {
     public enum Status
     {

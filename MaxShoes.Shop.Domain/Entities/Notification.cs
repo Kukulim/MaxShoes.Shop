@@ -1,4 +1,5 @@
 ﻿using MaxShoes.Shop.Domain.Common;
+using MaxShoes.Shop.Domain.Entities.StatusEnum;
 using System;
 
 namespace MaxShoes.Shop.Domain.Entities

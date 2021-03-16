@@ -1,4 +1,5 @@
 ﻿using MaxShoes.Shop.Domain.Entities;
+using MaxShoes.Shop.Domain.Entities.StatusEnum;
 using MediatR;
 using System;
 using System.Collections.Generic;

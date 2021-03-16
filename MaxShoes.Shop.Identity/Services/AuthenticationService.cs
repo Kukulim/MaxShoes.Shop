@@ -30,7 +30,7 @@ namespace MaxShoes.Shop.Identity.Services
         public async Task<LoginResult> AuthenticateAsync(LoginRequest request)
         {
 
-            var CurrentUser =  userServices.GetUserByEmailAsync(request.Email);
+            var CurrentUser = await userServices.GetUserByEmailAsync(request.Email);
 
             if (CurrentUser == null)
             {
@@ -48,6 +48,11 @@ namespace MaxShoes.Shop.Identity.Services
                     UserName = "Max",
                     IsEmailConfirmed = true
                 };
+            }
+
+            if (!BC.Verify(request.Password, CurrentUser.Password))
+            {
+                throw new Exception($"Credentials for '{request.Email} aren't valid'.");
             }
 
             var claims = new[]
