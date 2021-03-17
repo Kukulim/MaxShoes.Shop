@@ -1,4 +1,5 @@
-﻿using MaxShoes.Shop.Identity.Models.UserModels;
+﻿using MaxShoes.Shop.Identity.Models.AccountModels;
+using MaxShoes.Shop.Identity.Models.UserModels;
 using MaxshoesBack.Services.UserServices;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -43,9 +44,10 @@ namespace MaxShoes.Shop.Identity.Services
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(User currentUser)
+        public async Task DeleteAsync(User userToRemove)
         {
-            context.Users.Remove(currentUser);
+
+            context.Users.Remove(userToRemove);
             await context.SaveChangesAsync();
         }
     }

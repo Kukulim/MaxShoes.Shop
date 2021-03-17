@@ -32,6 +32,8 @@ namespace MaxShoes.Shop.Api
 
             services.AddControllers();
 
+            services.AddSwaggerGen();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -54,6 +56,13 @@ namespace MaxShoes.Shop.Api
             app.UseCors("Open");
 
             app.UseAuthorization();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MaxShoesAPI");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(endpoints =>
             {

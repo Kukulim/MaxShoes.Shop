@@ -1,5 +1,7 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Presistance;
+using MaxShoes.Shop.Identity.Models.AccountModels;
 using MaxShoes.Shop.Identity.Models.UserModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

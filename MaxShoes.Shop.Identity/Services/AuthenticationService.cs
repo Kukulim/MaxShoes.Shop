@@ -134,7 +134,7 @@ namespace MaxShoes.Shop.Identity.Services
             {
                 throw new Exception($"User with {request.Email} not found.");
             }
-            if (CurrentUser.Email==request.Email && CurrentUser.UserName == request.UserName && BC.Verify(request.Password, CurrentUser.Password))
+            if (CurrentUser.Email == request.Email && CurrentUser.UserName == request.UserName && BC.Verify(request.Password, CurrentUser.Password))
             {
                 await userServices.DeleteAsync(CurrentUser);
             }

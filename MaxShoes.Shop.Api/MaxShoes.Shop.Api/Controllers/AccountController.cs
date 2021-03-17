@@ -48,11 +48,11 @@ namespace MaxShoes.Shop.Api.Controllers
             return Ok();
         }
 
-        [HttpPost("remove")]
+        [HttpDelete("remove")]
         [Authorize]
-        public ActionResult Remove([FromBody] RemoveAccountRequest request)
+        public async Task<ActionResult> Remove([FromBody] RemoveAccountRequest request)
         {
-            _authenticationService.RemoveAccoutAsync(request);
+            await _authenticationService.RemoveAccoutAsync(request);
             return Ok();
         }
     }

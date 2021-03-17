@@ -16,7 +16,6 @@ namespace MaxShoes.Shop.Application.Models.AccountModels
         public string RefreshToken { get; set; }
         public string Email { get; set; }
         public bool IsEmailConfirmed { get; set; }
-        public List<Notification> Notifications { get; set; }
         public Contact Contact { get; set; }
     }
 }
