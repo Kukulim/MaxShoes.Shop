@@ -8,5 +8,8 @@ namespace MaxShoes.Shop.Application.Contracts.Identity
     {
         Task<LoginResult> AuthenticateAsync(LoginRequest request);
         Task RegisterAsync(RegisterRequest request);
+        Task LogoutAsync(string currentUsetEmail);
+        Task EditContactAsync(EditContactRequest request);
+        Task RemoveAccoutAsync(RemoveAccountRequest request);
     }
 }

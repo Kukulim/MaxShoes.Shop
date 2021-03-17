@@ -9,5 +9,6 @@ namespace MaxShoes.Shop.Identity.Models.JwtAuthModels
         public string TokenString { get; set; }
 
         public DateTime ExpireAt { get; set; }
+        public string Email { get; set; }
     }
 }

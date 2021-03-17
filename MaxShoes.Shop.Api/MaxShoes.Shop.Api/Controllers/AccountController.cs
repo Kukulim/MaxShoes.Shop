@@ -1,6 +1,9 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Identity;
 using MaxShoes.Shop.Application.Models.AccountModels;
+using MaxShoes.Shop.Identity.Models.AccountModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Api.Controllers
@@ -21,15 +24,36 @@ namespace MaxShoes.Shop.Api.Controllers
             return Ok(await _authenticationService.AuthenticateAsync(request));
         }
 
-        //[HttpGet("test")]
-        //public async Task<ActionResult<LoginResult>> Test(LoginRequest request)
-        //{
-        //    return Ok("test");
-        //}
-        //[HttpPost("register")]
-        //public async Task<ActionResult<RegistrationResponse>> RegisterAsync(RegistrationRequest request)
-        //{
-        //    return Ok(await _authenticationService.RegisterAsync(request));
-        //}
+        [HttpPost("register")]
+        public async Task<ActionResult> RegisterAsync(RegisterRequest request)
+        {
+            await _authenticationService.RegisterAsync(request);
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<ActionResult> LogoutAsync()
+        {
+            var CurrentUsetEmail = User.FindFirst(ClaimTypes.Email).Value;
+            await _authenticationService.LogoutAsync(CurrentUsetEmail);
+            return Ok();
+        }
+
+        [HttpPost("editcontact")]
+        [Authorize]
+        public async Task<ActionResult> EditContact([FromBody] EditContactRequest request)
+        {
+            await _authenticationService.EditContactAsync(request);
+            return Ok();
+        }
+
+        [HttpPost("remove")]
+        [Authorize]
+        public ActionResult Remove([FromBody] RemoveAccountRequest request)
+        {
+            _authenticationService.RemoveAccoutAsync(request);
+            return Ok();
+        }
     }
 }

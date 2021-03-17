@@ -10,6 +10,8 @@ namespace MaxshoesBack.Services.UserServices
         Task<bool> IsAnExistingUserAsync (string userName, string UserEmail);
 
         Task<User> GetUserByEmailAsync (string userEmail);
-
+        Task CreateAsync(User newUser);
+        Task EditContactsAsync(User currentUser);
+        Task DeleteAsync(User currentUser);
     }
 }

@@ -37,9 +37,9 @@ namespace MaxShoes.Shop.Identity.JwtAuth
         }
 
         // can be more specific to ip, user agent, device name, etc.
-        public void RemoveRefreshTokenByUserName(string userName)
+        public void RemoveRefreshTokenByUserEmail(string userEmail)
         {
-            var refreshTokens = _usersRefreshTokens.Where(x => x.Value.UserName == userName).ToList();
+            var refreshTokens = _usersRefreshTokens.Where(x => x.Value.Email == userEmail).ToList();
             foreach (var refreshToken in refreshTokens)
             {
                 _usersRefreshTokens.TryRemove(refreshToken.Key, out _);

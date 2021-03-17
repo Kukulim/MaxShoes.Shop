@@ -16,7 +16,7 @@ namespace MaxShoes.Shop.Application.Contracts.Identity
 
         void RemoveExpiredRefreshTokens(DateTime now);
 
-        void RemoveRefreshTokenByUserName(string userName);
+        void RemoveRefreshTokenByUserEmail(string userName);
 
         (ClaimsPrincipal, JwtSecurityToken) DecodeJwtToken(string token);
 

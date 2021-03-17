@@ -1,11 +1,11 @@
 ﻿using MaxShoes.Shop.Application.Models.UserModels;
-using MaxShoes.Shop.Domain.Entities;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MaxShoes.Shop.Identity.Models.UserModels
 {
     public class User
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
         public string UserName { get; set; }
@@ -16,6 +16,5 @@ namespace MaxShoes.Shop.Identity.Models.UserModels
         public bool IsEmailConfirmed { get; set; } = false;
         public Contact Contact { get; set; }
 
-        //public virtual List<Notification> Notifications { get; set; }
     }
 }
