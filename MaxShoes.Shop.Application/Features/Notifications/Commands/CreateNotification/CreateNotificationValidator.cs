@@ -12,9 +12,6 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotifi
             RuleFor(n => n.Title)
                 .NotNull()
                 .NotEmpty();
-
-            RuleFor(n => n.SendedAt)
-                .GreaterThan(DateTime.UtcNow);
         }
     }
 }

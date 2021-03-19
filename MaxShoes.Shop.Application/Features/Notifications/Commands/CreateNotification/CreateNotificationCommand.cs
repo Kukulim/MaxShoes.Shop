@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotification
 {
-    public class CreateNotificationCommand : IRequest<Notification>
+    public class CreateNotificationCommand : IRequest<NotificationCreateVm>
     {
         public string Id { get; set; }
 

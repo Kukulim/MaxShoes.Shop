@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotification
 {
-    public class CreateNotificationCommandHandler : IRequestHandler<CreateNotificationCommand, Notification>
+    public class CreateNotificationCommandHandler : IRequestHandler<CreateNotificationCommand, NotificationCreateVm>
     {
         private readonly IAsyncRepository<Notification> notificationsRepository;
         private readonly IMapper mapper;
@@ -22,7 +22,7 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotifi
             this.mapper = mapper;
         }
 
-        public async Task<Notification> Handle(CreateNotificationCommand request, CancellationToken cancellationToken)
+        public async Task<NotificationCreateVm> Handle(CreateNotificationCommand request, CancellationToken cancellationToken)
         {
             var validator = new CreateNotificationValidator();
             var validatorResult = validator.ValidateAsync(request);
@@ -33,8 +33,10 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotifi
             }
 
             var notification = mapper.Map<Notification>(request);
+
             notification = await notificationsRepository.AddAsync(notification);
-            return notification;
+
+            return mapper.Map<NotificationCreateVm>(notification);
         }
     }
 }

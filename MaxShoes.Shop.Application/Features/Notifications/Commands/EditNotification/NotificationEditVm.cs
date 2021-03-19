@@ -1,9 +1,11 @@
 ﻿using MaxShoes.Shop.Domain.Entities.StatusEnum;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotification
+namespace MaxShoes.Shop.Application.Features.Notifications.Commands.EditNotification
 {
-    public class NotificationVm
+    public class NotificationEditVm
     {
         public string Id { get; set; }
 

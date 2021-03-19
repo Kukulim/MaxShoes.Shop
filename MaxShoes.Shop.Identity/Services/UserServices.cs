@@ -28,6 +28,11 @@ namespace MaxShoes.Shop.Identity.Services
             return await context.Users.Where(u=>u.Email==userEmail).FirstOrDefaultAsync();
         }
 
+        public async Task<User> GetUserAsync(string id)
+        {
+            return await context.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> IsAnExistingUserAsync(string userName, string UserEmail)
         {
             var user = await context.Users.Where(user => user.UserName == userName || user.Email == UserEmail).FirstOrDefaultAsync();

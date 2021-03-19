@@ -15,7 +15,7 @@ namespace MaxshoesBack.Services.UserServices
         Task CreateAsync(User newUser);
         Task EditContactsAsync(User currentUser);
         Task DeleteAsync(User currentUser);
-
+        Task<User> GetUserAsync(string id);
         Task EditAsync(User currentUser);
     }
 }
