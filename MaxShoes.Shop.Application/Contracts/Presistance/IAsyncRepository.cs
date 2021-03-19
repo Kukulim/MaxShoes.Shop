@@ -12,6 +12,5 @@ namespace MaxShoes.Shop.Application.Contracts.Presistance
         Task<T> AddAsync(T entity);
         Task<T> EditAsync(T entity);
         Task DeleteAsync(T entity);
-
     }
 }

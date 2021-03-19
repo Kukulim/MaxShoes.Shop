@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList
 {
-    class GetNotificationListQueryHandler : IRequestHandler<GetNotificationListQuery, List<NotificationVm>>
+    public class GetNotificationListQueryHandler : IRequestHandler<GetCurrentUserNotificationListQuery, List<NotificationListVm>>
     {
         private readonly IMapper _mapper;
         private readonly IAsyncRepository<Notification> _notificationsRepository;
@@ -22,10 +22,10 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificati
         }
 
 
-        public async Task<List<NotificationVm>> Handle(GetNotificationListQuery request, CancellationToken cancellationToken)
+        public async Task<List<NotificationListVm>> Handle(GetCurrentUserNotificationListQuery request, CancellationToken cancellationToken)
         {
             var allNotifications = await _notificationsRepository.GetAllAsync();
-            return _mapper.Map<List<NotificationVm>>(allNotifications);
+            return _mapper.Map<List<NotificationListVm>>(allNotifications);
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using MaxShoes.Shop.Domain.Entities.StatusEnum;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList
+namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetCurrentUserNotificationList
 {
-    public class NotificationVm
+    class CurentUserNotificationListVm
     {
         public string Id { get; set; }
 

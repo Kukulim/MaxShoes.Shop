@@ -9,7 +9,7 @@ namespace MaxShoes.Shop.Presistance.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {
-        private readonly ApplicationDbContext context;
+        protected readonly ApplicationDbContext context;
 
         public BaseRepository(ApplicationDbContext context)
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList
 {
-    class GetNotificationListQuery : IRequest<List<NotificationVm>>
+    public class GetCurrentUserNotificationListQuery : IRequest<List<NotificationListVm>>
     {
     }
 }
