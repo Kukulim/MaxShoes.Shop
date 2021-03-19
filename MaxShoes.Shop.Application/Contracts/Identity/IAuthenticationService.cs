@@ -11,5 +11,11 @@ namespace MaxShoes.Shop.Application.Contracts.Identity
         Task LogoutAsync(string currentUsetEmail);
         Task EditContactAsync(EditContactRequest request);
         Task RemoveAccoutAsync(RemoveAccountRequest request);
+        LoginResult RefreshToken(RefreshTokenRequest request, string userName,string token);
+        Task SendConfirmEmailAsync(ConfirmEmailRequest request);
+        Task ConfirmEmailTokenAsync(ConfirmEmailTokenRequest request);
+        Task ChangePasswordAsync(ChangePasswordRequest request);
+        Task SendPasswordResetEmailAsync(PasswordResetEmailRequest request);
+        Task PasswordResetAsync(PasswordResetRequest request);
     }
 }

@@ -46,8 +46,13 @@ namespace MaxShoes.Shop.Identity.Services
 
         public async Task DeleteAsync(User userToRemove)
         {
-
             context.Users.Remove(userToRemove);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task EditAsync(User currentUser)
+        {
+            context.Entry(currentUser).State = EntityState.Modified;
             await context.SaveChangesAsync();
         }
     }

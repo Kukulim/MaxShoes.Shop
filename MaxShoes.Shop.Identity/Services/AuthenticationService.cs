@@ -5,7 +5,9 @@ using MaxShoes.Shop.Application.Models.UserModels;
 using MaxShoes.Shop.Identity.Models.AccountModels;
 using MaxShoes.Shop.Identity.Models.UserModels;
 using MaxshoesBack.Services.UserServices;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -143,6 +145,99 @@ namespace MaxShoes.Shop.Identity.Services
                 throw new Exception($"Credentials for '{request.UserName} aren't valid'.");
             }
 
+        }
+
+        public LoginResult RefreshToken(RefreshTokenRequest request, string userName, string token)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(request.RefreshToken))
+                {
+                    throw new Exception($"User unauthorized");
+                }
+
+                var jwtResult = jwtAuthManager.Refresh(request.RefreshToken, token, DateTime.Now);
+                return (new LoginResult
+                {
+                    UserName = userName,
+                    AccessToken = jwtResult.AccessToken,
+                    RefreshToken = jwtResult.RefreshToken.TokenString
+                });
+            }
+            catch (SecurityTokenException)
+            {
+                throw new Exception($"User unauthorized");
+            }
+        }
+
+        public async Task SendConfirmEmailAsync(ConfirmEmailRequest request)
+        {
+            var claims = new[]
+{
+                new Claim(ClaimTypes.Name,request.UserName),
+                new Claim(ClaimTypes.Email, request.UserEmail)
+            };
+            var ConfirmToken = jwtAuthManager.GenerateConfirmEmailToken(request.UserName, claims, DateTime.Now);
+
+            string Url = $"{configuration["appUrl"]}/api/account/confirmemail?UserName={request.UserName}&token={ConfirmToken}";
+
+            await emailSender.SendEmailAsync(request.UserEmail, "Confirm Email - Maxshoes", "<h1>Hello from Max Shoes</h1>" + $"<p> please confirm email by <a href='{Url}'>Click here!</a></p>");
+        }
+
+        public async Task ConfirmEmailTokenAsync(ConfirmEmailTokenRequest request)
+        {
+            var AcceptedEmail = jwtAuthManager.ConfirmEmailToken(request.UserName, request.Token, DateTime.Now);
+            if (AcceptedEmail == null)
+            {
+                throw new Exception($"User with {AcceptedEmail} not found.");
+            }
+            var CurrentUser = await userServices.GetUserByEmailAsync(AcceptedEmail);
+            CurrentUser.IsEmailConfirmed = true;
+            await userServices.EditAsync(CurrentUser);
+        }
+
+        public async Task ChangePasswordAsync(ChangePasswordRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Email))
+            {
+                throw new Exception($"User with {request.Email} not found.");
+            }
+            var CurrentUser = await userServices.GetUserByEmailAsync(request.Email);
+            if (BC.Verify(request.OldPassword, CurrentUser.Password))
+            {
+                CurrentUser.Password = BC.HashPassword(request.NewPassword);
+                await userServices.EditAsync(CurrentUser);
+            }
+            throw new Exception($"User unauthorized");
+        }
+
+        public async Task SendPasswordResetEmailAsync(PasswordResetEmailRequest request)
+        {
+            var claims = new[]
+{
+                new Claim(ClaimTypes.Email, request.Email)
+            };
+            var ConfirmToken = jwtAuthManager.GeneratePasswordResetToken(claims, DateTime.Now);
+
+            string Url = $"{configuration["appUrl"]}/api/account/passwordreset?UserEmail={request.Email}&token={ConfirmToken}";
+
+            await emailSender.SendEmailAsync(request.Email, "Reset Password - Maxshoes", "<h1>Hello from Max shoes</h1>" + $"<p> to reset your password: <a href='{Url}'>Click here!</a></p>");
+        }
+
+        public async Task PasswordResetAsync(PasswordResetRequest request)
+        {
+            var CurrentUser = await userServices.GetUserByEmailAsync(request.UserEmail);
+            var AcceptedEmail = jwtAuthManager.ConfirmPasswordResetToken(request.UserEmail, request.Token);
+            if (AcceptedEmail == null)
+            {
+                throw new Exception($"User with {request.UserEmail} not found.");
+            }
+            if (CurrentUser.Email == request.UserEmail)
+            {
+                CurrentUser.Password = jwtAuthManager.GenerateTemporaryPasswordString();
+                await emailSender.SendEmailAsync(request.UserEmail, "Reset Password - Maxshoes", $"Your new temporary password: '{CurrentUser.Password}'");
+                await userServices.EditAsync(CurrentUser);
+            }
         }
     }
 }
