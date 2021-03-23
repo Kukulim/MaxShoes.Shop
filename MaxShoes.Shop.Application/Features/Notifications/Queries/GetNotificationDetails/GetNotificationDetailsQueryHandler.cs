@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MaxShoes.Shop.Application.Contracts.Presistance;
+using MaxShoes.Shop.Application.Exceptions;
 using MaxShoes.Shop.Domain.Entities;
 using MediatR;
 using System.Threading;
@@ -21,6 +22,10 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificati
         public async Task<NotificationVm> Handle(GetNotificationDetailsQuery request, CancellationToken cancellationToken)
         {
             var notifications = await _notificationsRepository.GetByIdAsync(request.NotificationId.ToString());
+            if (notifications == null)
+            {
+                throw new NotFoundException(nameof(Notification), request.NotificationId);
+            }
             return _mapper.Map<NotificationVm>(notifications);
         }
     }

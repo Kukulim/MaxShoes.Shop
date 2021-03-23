@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MaxShoes.Shop.Application.Contracts.Infrastructure;
 using MaxShoes.Shop.Application.Contracts.Presistance;
+using MaxShoes.Shop.Application.Exceptions;
 using MaxShoes.Shop.Domain.Entities;
 using MaxshoesBack.Services.UserServices;
 using MediatR;
@@ -29,6 +30,11 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Commands.EditNotifica
         public async Task<NotificationEditVm> Handle(EditNotificationCommand request, CancellationToken cancellationToken)
         {
             var notificationToEdit = await notificationsRepository.GetByIdAsync(request.Id);
+
+            if (notificationToEdit==null)
+            {
+                throw new NotFoundException(nameof(Notification), request.Id);
+            }
             notificationToEdit = await notificationsRepository.EditAsync(notificationToEdit);
             try
             {

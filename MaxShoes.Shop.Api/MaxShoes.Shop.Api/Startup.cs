@@ -1,3 +1,4 @@
+using MaxShoes.Shop.Api.Middleware;
 using MaxShoes.Shop.Application;
 using MaxShoes.Shop.Identity;
 using MaxShoes.Shop.Infrastructure;
@@ -54,6 +55,8 @@ namespace MaxShoes.Shop.Api
             app.UseAuthentication();
 
             app.UseCors("Open");
+
+            app.UseCustomExceptionHandler();
 
             app.UseAuthorization();
             app.UseSwagger();

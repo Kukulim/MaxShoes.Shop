@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using MaxShoes.Shop.Application.Contracts.Presistance;
-using MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList;
+using MaxShoes.Shop.Application.Exceptions;
 using MaxShoes.Shop.Domain.Entities;
 using MediatR;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,6 +23,11 @@ namespace MaxShoes.Shop.Application.Features.Notifications.Queries.GetCurrentUse
         public async Task<List<CurentUserNotificationListVm>> Handle(GetCurrentUserNotificationListQuery request, CancellationToken cancellationToken)
         {
             var notifications = await _notificationsRepository.GetAllCurrentUserAsync(request.CurrentUserId);
+
+            if (notifications==null)
+            {
+                throw new NotFoundException(nameof(Notification), request.CurrentUserId);
+            }
             return _mapper.Map <List<CurentUserNotificationListVm>>(notifications);
         }
 
