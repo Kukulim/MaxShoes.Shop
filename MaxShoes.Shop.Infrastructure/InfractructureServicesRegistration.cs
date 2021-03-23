@@ -5,6 +5,7 @@ using MaxShoes.Shop.Infrastructure.Email;
 using System;
 using System.Net.Http.Headers;
 using System.Text;
+using MaxShoes.Shop.Infrastructure.FileServices;
 
 namespace MaxShoes.Shop.Infrastructure
 {
@@ -22,6 +23,8 @@ namespace MaxShoes.Shop.Infrastructure
                 cfg.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(Encoding.UTF8.GetBytes($"api:{mailConfigSection.MailgunKey}")));
             });
+
+            services.AddTransient<IFileService, FileService>();
             return services;
         }
     }
