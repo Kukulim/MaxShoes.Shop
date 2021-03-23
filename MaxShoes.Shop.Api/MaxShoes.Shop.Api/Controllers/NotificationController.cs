@@ -93,7 +93,7 @@ namespace MaxShoes.Shop.Api.Controllers
         public async Task<IActionResult> Download([FromQuery] string file)
         {
             var memory = await fileService.DownloadFile(file);
-            return File(memory, "text", file);
+            return File(memory, "text/plain", file);
         }
     }
 }

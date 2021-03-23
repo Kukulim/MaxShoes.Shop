@@ -13,7 +13,7 @@ namespace MaxShoes.Shop.Infrastructure.FileServices
     {
         public bool CheckIfSuportedFile(IFormFile file)
         {
-                var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
+                var extension = "." + file.FileName.Split('.')[^1];
                 return (extension == ".pdf" || extension == ".jpg");
         }
 
@@ -21,8 +21,6 @@ namespace MaxShoes.Shop.Infrastructure.FileServices
         {
             var uploads = Path.Combine(Directory.GetCurrentDirectory(), "Resources");
             var filePath = Path.Combine(uploads, file);
-            if (File.Exists(filePath))
-                throw new NotFoundException("file", filePath);
 
             var memory = new MemoryStream();
             using (var stream = new FileStream(filePath, FileMode.Open))
