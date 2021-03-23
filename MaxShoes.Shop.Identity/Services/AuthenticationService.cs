@@ -7,6 +7,7 @@ using MaxShoes.Shop.Identity.Models.UserModels;
 using MaxshoesBack.Services.UserServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Security.Claims;
@@ -21,13 +22,15 @@ namespace MaxShoes.Shop.Identity.Services
         private readonly IEmailService emailSender;
         private readonly IConfiguration configuration;
         private readonly IUserServices userServices;
+        private readonly ILogger<AuthenticationService> logger;
 
-        public AuthenticationService(IJwtAuthManager jwtAuthManager, IEmailService emailSender, IConfiguration configuration, IUserServices userServices)
+        public AuthenticationService(IJwtAuthManager jwtAuthManager, IEmailService emailSender, IConfiguration configuration, IUserServices userServices, ILogger<AuthenticationService> logger)
         {
             this.jwtAuthManager = jwtAuthManager;
             this.emailSender = emailSender;
             this.configuration = configuration;
             this.userServices = userServices;
+            this.logger = logger;
         }
         public async Task<LoginResult> AuthenticateAsync(LoginRequest request)
         {
@@ -65,6 +68,9 @@ namespace MaxShoes.Shop.Identity.Services
             };
 
             var jwtResult = jwtAuthManager.GenerateTokens(CurrentUser.UserName, claims, DateTime.Now);
+
+            logger.LogInformation($"User [{request.Email}] logged in the system.");
+
             return (new LoginResult
             {
                 UserId = CurrentUser.Id,
@@ -92,6 +98,8 @@ namespace MaxShoes.Shop.Identity.Services
                 };
                 await userServices.CreateAsync(newUser);
 
+                logger.LogInformation($"New user [{request.Email}] register.");
+
                 var claims = new[]
 {
                 new Claim(ClaimTypes.Name,request.UserName),
@@ -114,6 +122,7 @@ namespace MaxShoes.Shop.Identity.Services
         public Task LogoutAsync(string userEmail)
         {
             jwtAuthManager.RemoveRefreshTokenByUserEmail(userEmail);
+            logger.LogInformation($"User [{userEmail}] logged out the system.");
             return Task.CompletedTask;
         }
 
@@ -139,6 +148,7 @@ namespace MaxShoes.Shop.Identity.Services
             if (CurrentUser.Email == request.Email && CurrentUser.UserName == request.UserName && BC.Verify(request.Password, CurrentUser.Password))
             {
                 await userServices.DeleteAsync(CurrentUser);
+                logger.LogInformation($"User [{request.Email}] removed.");
             }
             else
             {
@@ -151,12 +161,14 @@ namespace MaxShoes.Shop.Identity.Services
         {
             try
             {
+                logger.LogInformation($"User [{userName}] is trying to refresh JWT token.");
                 if (string.IsNullOrWhiteSpace(request.RefreshToken))
                 {
                     throw new Exception($"User unauthorized");
                 }
 
                 var jwtResult = jwtAuthManager.Refresh(request.RefreshToken, token, DateTime.Now);
+                logger.LogInformation($"User [{userName}] has refreshed JWT token.");
                 return (new LoginResult
                 {
                     UserName = userName,
@@ -207,6 +219,7 @@ namespace MaxShoes.Shop.Identity.Services
             {
                 CurrentUser.Password = BC.HashPassword(request.NewPassword);
                 await userServices.EditAsync(CurrentUser);
+                logger.LogInformation($"User [{request.Email}] change password.");
             }
             throw new Exception($"User unauthorized");
         }

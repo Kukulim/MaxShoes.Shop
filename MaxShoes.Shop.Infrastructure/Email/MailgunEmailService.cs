@@ -1,4 +1,5 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Infrastructure;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,10 +8,13 @@ namespace MaxShoes.Shop.Infrastructure.Email
 {
     public class MailgunEmailService : IEmailService
     {
-        public MailgunEmailService(HttpClient mailgunHttpClient, MailConfigSection mailConfigSection)
+        private readonly ILogger<MailgunEmailService> logger;
+
+        public MailgunEmailService(HttpClient mailgunHttpClient, MailConfigSection mailConfigSection, ILogger<MailgunEmailService> logger)
         {
             this.mailgunHttpClient = mailgunHttpClient;
             this.mailConfigSection = mailConfigSection;
+            this.logger = logger;
         }
 
         public HttpClient mailgunHttpClient { get; }
@@ -27,7 +31,7 @@ namespace MaxShoes.Shop.Infrastructure.Email
             };
 
             await mailgunHttpClient.PostAsync($"v3/{mailConfigSection.Domain}/messages", new FormUrlEncodedContent(form));
-
+            logger.LogInformation("Email sended");
         }
     }
 }

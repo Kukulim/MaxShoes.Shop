@@ -1,6 +1,7 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Infrastructure;
 using MaxShoes.Shop.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +12,12 @@ namespace MaxShoes.Shop.Infrastructure.FileServices
 {
     class FileService : IFileService
     {
+        private readonly ILogger<FileService> logger;
+
+        public FileService(ILogger<FileService> logger)
+        {
+            this.logger = logger;
+        }
         public bool CheckIfSuportedFile(IFormFile file)
         {
                 var extension = "." + file.FileName.Split('.')[^1];
@@ -56,10 +63,11 @@ namespace MaxShoes.Shop.Infrastructure.FileServices
                 }
 
                 isSaveSuccess = true;
+                logger.LogInformation($"File {fileName} saved.");
             }
             catch (Exception e)
             {
-                //log error
+                logger.LogWarning(e,"Saving file failed.");
             }
 
             return isSaveSuccess;
