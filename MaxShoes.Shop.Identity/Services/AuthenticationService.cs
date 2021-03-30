@@ -1,5 +1,6 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Identity;
 using MaxShoes.Shop.Application.Contracts.Infrastructure;
+using MaxShoes.Shop.Application.Dtos;
 using MaxShoes.Shop.Application.Models.AccountModels;
 using MaxShoes.Shop.Application.Models.UserModels;
 using MaxShoes.Shop.Identity.Models.AccountModels;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BC = BCrypt.Net.BCrypt;
@@ -252,5 +254,6 @@ namespace MaxShoes.Shop.Identity.Services
                 await userServices.EditAsync(CurrentUser);
             }
         }
+
     }
 }

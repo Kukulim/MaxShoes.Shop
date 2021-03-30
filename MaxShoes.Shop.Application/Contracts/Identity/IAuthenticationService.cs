@@ -1,5 +1,6 @@
 ﻿using MaxShoes.Shop.Application.Models.AccountModels;
 using MaxShoes.Shop.Identity.Models.AccountModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Application.Contracts.Identity

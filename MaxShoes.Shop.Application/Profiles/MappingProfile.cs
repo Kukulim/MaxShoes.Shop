@@ -4,6 +4,7 @@ using MaxShoes.Shop.Application.Features.Notifications.Commands.EditNotification
 using MaxShoes.Shop.Application.Features.Notifications.Queries.GetCurrentUserNotificationList;
 using MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList;
 using MaxShoes.Shop.Domain.Entities;
+using MaxShoes.Shop.Identity.Models.UserModels;
 
 namespace MaxShoes.Shop.Application.Profiles
 {
@@ -16,6 +17,7 @@ namespace MaxShoes.Shop.Application.Profiles
             CreateMap<Notification, CurentUserNotificationListVm>().ReverseMap();
             CreateMap<Notification, NotificationCreateVm>().ReverseMap();
             CreateMap<Notification, CreateNotificationCommand>().ReverseMap();
+
         }
     }
 }

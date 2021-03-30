@@ -1,5 +1,7 @@
-﻿using MaxShoes.Shop.Application.Contracts.Presistance;
+﻿using MaxShoes.Shop.Application.Contracts.Identity;
+using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Presistance.Repositories;
+using MaxShoes.Shop.Presistance.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,8 @@ namespace MaxShoes.Shop.Presistance
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddScoped<INotificationRepository, NotificationRepository>();
+
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             return services;
         }
