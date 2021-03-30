@@ -1,10 +1,9 @@
-﻿using System;
+﻿using MediatR;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList
 {
-    class GetEmployeeListQuery
+    public class GetEmployeeListQuery: IRequest<List<EmployeeListVm>>
     {
     }
 }

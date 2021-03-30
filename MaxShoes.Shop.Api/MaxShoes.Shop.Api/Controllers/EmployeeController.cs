@@ -1,4 +1,5 @@
-﻿using MaxShoes.Shop.Application.Models.UserModels;
+﻿using MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList;
+using MaxShoes.Shop.Application.Models.UserModels;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 namespace MaxShoes.Shop.Api.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = UserRoles.MaxShopOwner)]
     [ApiController]
     public class EmployeeController : ControllerBase
     {

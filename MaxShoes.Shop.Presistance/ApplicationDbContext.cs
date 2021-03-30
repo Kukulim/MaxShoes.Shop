@@ -1,5 +1,6 @@
 ﻿using MaxShoes.Shop.Domain.Common;
 using MaxShoes.Shop.Domain.Entities;
+using MaxShoes.Shop.Identity.Models.UserModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
@@ -14,6 +15,7 @@ namespace MaxShoes.Shop.Presistance
         }
 
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

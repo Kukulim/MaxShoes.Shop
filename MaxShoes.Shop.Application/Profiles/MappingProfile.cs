@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList;
 using MaxShoes.Shop.Application.Features.Notifications.Commands.CreateNotification;
 using MaxShoes.Shop.Application.Features.Notifications.Commands.EditNotification;
 using MaxShoes.Shop.Application.Features.Notifications.Queries.GetCurrentUserNotificationList;
 using MaxShoes.Shop.Application.Features.Notifications.Queries.GetNotificationList;
+using MaxShoes.Shop.Application.Models.UserModels;
 using MaxShoes.Shop.Domain.Entities;
 using MaxShoes.Shop.Identity.Models.UserModels;
 
@@ -18,6 +20,9 @@ namespace MaxShoes.Shop.Application.Profiles
             CreateMap<Notification, NotificationCreateVm>().ReverseMap();
             CreateMap<Notification, CreateNotificationCommand>().ReverseMap();
 
+            CreateMap<User, EmployeeListVm>().ReverseMap();
+
+            CreateMap<Contact, ContactDto>().ReverseMap();
         }
     }
 }

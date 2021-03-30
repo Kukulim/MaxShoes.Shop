@@ -1,5 +1,4 @@
-﻿using MaxShoes.Shop.Application.Contracts.Identity;
-using MaxShoes.Shop.Application.Contracts.Presistance;
+﻿using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Presistance.Repositories;
 using MaxShoes.Shop.Presistance.Services;
 using Microsoft.EntityFrameworkCore;

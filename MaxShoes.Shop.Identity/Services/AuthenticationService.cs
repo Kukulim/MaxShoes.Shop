@@ -1,6 +1,5 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Identity;
 using MaxShoes.Shop.Application.Contracts.Infrastructure;
-using MaxShoes.Shop.Application.Dtos;
 using MaxShoes.Shop.Application.Models.AccountModels;
 using MaxShoes.Shop.Application.Models.UserModels;
 using MaxShoes.Shop.Identity.Models.AccountModels;

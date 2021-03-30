@@ -1,9 +1,26 @@
-﻿using MaxShoes.Shop.Application.Contracts.Identity;
+﻿using MaxShoes.Shop.Application.Contracts.Presistance;
+using MaxShoes.Shop.Application.Models.UserModels;
+using MaxShoes.Shop.Identity.Models.UserModels;
+using MaxShoes.Shop.Presistance.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Presistance.Services
 {
-    class EmployeeService : IEmployeeService
+    class EmployeeService : BaseRepository<User>, IEmployeeService
     {
+        public EmployeeService(ApplicationDbContext context) : base(context)
+        {
+                
+        }
 
+        public async Task<List<User>> GetAllEmployeesAsync()
+        {
+            var test = await context.Users.Where(n => n.Role == UserRoles.Employee).ToListAsync();
+
+            return test;
+        }
     }
 }

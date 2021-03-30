@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList
 {
-    class ContactDto
+    public class ContactDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
