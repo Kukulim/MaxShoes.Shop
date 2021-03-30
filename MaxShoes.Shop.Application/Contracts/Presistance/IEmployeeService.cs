@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Application.Contracts.Presistance
 {
-    public interface IEmployeeService :IAsyncRepository<User>
+    public interface IEmployeeService
     {
         Task<List<User>> GetAllEmployeesAsync();
     }

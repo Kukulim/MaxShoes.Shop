@@ -1,5 +1,6 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Application.Models.UserModels;
+using MaxShoes.Shop.Identity;
 using MaxShoes.Shop.Identity.Models.UserModels;
 using MaxShoes.Shop.Presistance.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,13 @@ using System.Threading.Tasks;
 
 namespace MaxShoes.Shop.Presistance.Services
 {
-    class EmployeeService : BaseRepository<User>, IEmployeeService
+    class EmployeeService : IEmployeeService
     {
-        public EmployeeService(ApplicationDbContext context) : base(context)
+        private readonly ApplicationIdentityDbContext context;
+
+        public EmployeeService(ApplicationIdentityDbContext context)
         {
-                
+            this.context = context;
         }
 
         public async Task<List<User>> GetAllEmployeesAsync()

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MaxShoes.Shop.Application\MaxShoes.Shop.Application.csproj" />
+    <ProjectReference Include="..\MaxShoes.Shop.Identity\MaxShoes.Shop.Identity.csproj" />
   </ItemGroup>
 
 </Project>
