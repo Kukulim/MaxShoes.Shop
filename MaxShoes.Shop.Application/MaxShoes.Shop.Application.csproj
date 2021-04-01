@@ -23,8 +23,4 @@
     <ProjectReference Include="..\MaxShoes.Shop.Domain\MaxShoes.Shop.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Employees\Commands\" />
-  </ItemGroup>
-
 </Project>

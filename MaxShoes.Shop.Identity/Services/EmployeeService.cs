@@ -2,6 +2,7 @@
 using MaxShoes.Shop.Application.Models.UserModels;
 using MaxShoes.Shop.Identity.Models.UserModels;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,13 @@ namespace MaxShoes.Shop.Identity.Services
         public EmployeeService(ApplicationIdentityDbContext context)
         {
             this.context = context;
+        }
+
+        public async Task<string> AddAsync(User request)
+        {
+            await context.AddAsync(request);
+            await context.SaveChangesAsync();
+            return request.Id;
         }
 
         public async Task<List<User>> GetAllEmployeesAsync()
