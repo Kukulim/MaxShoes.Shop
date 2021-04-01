@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
+using MaxShoes.Shop.Application.Contracts.Identity;
 using MaxShoes.Shop.Application.Contracts.Infrastructure;
 using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Application.Exceptions;
 using MaxShoes.Shop.Domain.Entities;
-using MaxshoesBack.Services.UserServices;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;

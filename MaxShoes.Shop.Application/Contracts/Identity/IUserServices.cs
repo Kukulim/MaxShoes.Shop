@@ -5,13 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MaxshoesBack.Services.UserServices
+namespace MaxShoes.Shop.Application.Contracts.Identity
 {
     public interface IUserServices
     {
-        Task<bool> IsAnExistingUserAsync (string userName, string UserEmail);
+        Task<bool> IsAnExistingUserAsync(string userName, string UserEmail);
 
-        Task<User> GetUserByEmailAsync (string userEmail);
+        Task<User> GetUserByEmailAsync(string userEmail);
         Task CreateAsync(User newUser);
         Task EditContactsAsync(User currentUser);
         Task DeleteAsync(User currentUser);

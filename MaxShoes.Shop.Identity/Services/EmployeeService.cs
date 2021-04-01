@@ -1,14 +1,12 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Application.Models.UserModels;
-using MaxShoes.Shop.Identity;
 using MaxShoes.Shop.Identity.Models.UserModels;
-using MaxShoes.Shop.Presistance.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MaxShoes.Shop.Presistance.Services
+namespace MaxShoes.Shop.Identity.Services
 {
     class EmployeeService : IEmployeeService
     {

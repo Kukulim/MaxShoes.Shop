@@ -1,6 +1,6 @@
-﻿using MaxShoes.Shop.Identity.Models.AccountModels;
+﻿using MaxShoes.Shop.Application.Contracts.Identity;
+using MaxShoes.Shop.Identity.Models.AccountModels;
 using MaxShoes.Shop.Identity.Models.UserModels;
-using MaxshoesBack.Services.UserServices;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

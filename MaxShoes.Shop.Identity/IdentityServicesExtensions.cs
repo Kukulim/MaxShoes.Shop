@@ -1,7 +1,7 @@
 ﻿using MaxShoes.Shop.Application.Contracts.Identity;
+using MaxShoes.Shop.Application.Contracts.Presistance;
 using MaxShoes.Shop.Identity.JwtAuth;
 using MaxShoes.Shop.Identity.Services;
-using MaxshoesBack.Services.UserServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +26,7 @@ namespace MaxShoes.Shop.Identity
 
             services.AddScoped<IUserServices, UserServices>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             services.AddSingleton<IJwtAuthManager, JwtAuthManager>();
 

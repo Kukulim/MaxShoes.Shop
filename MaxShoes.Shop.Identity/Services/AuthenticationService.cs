@@ -4,7 +4,6 @@ using MaxShoes.Shop.Application.Models.AccountModels;
 using MaxShoes.Shop.Application.Models.UserModels;
 using MaxShoes.Shop.Identity.Models.AccountModels;
 using MaxShoes.Shop.Identity.Models.UserModels;
-using MaxshoesBack.Services.UserServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
