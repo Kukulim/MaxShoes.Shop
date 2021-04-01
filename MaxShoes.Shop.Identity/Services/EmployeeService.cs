@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BC = BCrypt.Net.BCrypt;
 
 namespace MaxShoes.Shop.Identity.Services
 {
@@ -20,6 +21,10 @@ namespace MaxShoes.Shop.Identity.Services
 
         public async Task<string> AddAsync(User request)
         {
+            request.Id = Guid.NewGuid().ToString();
+            request.Contact.Id = Guid.NewGuid().ToString();
+            request.Contact.UserId = request.Id;
+            request.Password = BC.HashPassword(request.Password);
             await context.AddAsync(request);
             await context.SaveChangesAsync();
             return request.Id;

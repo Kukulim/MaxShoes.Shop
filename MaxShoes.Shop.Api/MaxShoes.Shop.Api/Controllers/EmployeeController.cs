@@ -1,4 +1,5 @@
-﻿using MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList;
+﻿using MaxShoes.Shop.Application.Features.Employees.Commands.CreateEmployee;
+using MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList;
 using MaxShoes.Shop.Application.Models.UserModels;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -25,19 +26,12 @@ namespace MaxShoes.Shop.Api.Controllers
             return Ok(dtos);
         }
 
-        //[HttpPost("createemployee")]
-        //public ActionResult CreateEmployee([FromBody] User request)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    request.Password = BC.HashPassword(request.Password);
-        //    request.Contact.UserId = request.Id;
-        //    _userService.Create(request);
-        //    _userService.Complete();
-        //    return Ok();
-        //}
+        [HttpPost("createemployee")]
+        public async Task<ActionResult<string>> CreateEmployeeAsync([FromBody] CreateEmployeeCommand request)
+        {
+            var id = await mediator.Send(request);
+            return Ok(id);
+        }
 
         //[HttpPost("editemployee")]
         //public ActionResult EditEmployee([FromBody] User request)

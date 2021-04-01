@@ -28,6 +28,10 @@ namespace MaxShoes.Shop.Application.Features.Employees.Commands.CreateEmployee
             var employee = mapper.Map<User>(request);
 
             var EmployeeId = await employeeService.AddAsync(employee);
+            if (EmployeeId!=null)
+            {
+                logger.LogInformation($"New user Created (Id = {EmployeeId}.)");
+            }
             return EmployeeId;
         }
     }
