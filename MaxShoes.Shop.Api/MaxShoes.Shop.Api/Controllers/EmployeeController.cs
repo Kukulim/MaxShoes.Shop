@@ -1,4 +1,5 @@
 ﻿using MaxShoes.Shop.Application.Features.Employees.Commands.CreateEmployee;
+using MaxShoes.Shop.Application.Features.Employees.Commands.EditEmployee;
 using MaxShoes.Shop.Application.Features.Employees.Queries.GetEmployeeList;
 using MaxShoes.Shop.Application.Models.UserModels;
 using MediatR;
@@ -33,16 +34,11 @@ namespace MaxShoes.Shop.Api.Controllers
             return Ok(id);
         }
 
-        //[HttpPost("editemployee")]
-        //public ActionResult EditEmployee([FromBody] User request)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    var editedEmployee = _userService.EditEmployee(request);
-        //    _userService.Complete();
-        //    return Ok(editedEmployee);
-        //}
+        [HttpPost("editemployee")]
+        public async Task<ActionResult> EditEmployeeAsync([FromBody] EditEmployeeCommand request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
     }
 }

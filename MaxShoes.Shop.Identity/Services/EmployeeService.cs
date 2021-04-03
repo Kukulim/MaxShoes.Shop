@@ -36,5 +36,11 @@ namespace MaxShoes.Shop.Identity.Services
 
             return test;
         }
+
+        public async Task UpdateAsync(User employee)
+        {
+            context.Entry(employee).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+        }
     }
 }
